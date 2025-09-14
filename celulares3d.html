@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celulares Flutuantes 3D</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .phones-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+        }
+        
+        /* Efeito de partículas no fundo */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .phone-wrapper {
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+            z-index: 10;
+        }
+        
+        .phone {
+            position: relative;
+            width: 280px;
+            height: 560px;
+            background: #0a0a0a;
+            border-radius: 40px;
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                0 20px 50px rgba(0, 0, 0, 0.8),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        /* Efeito de brilho que segue o mouse */
+        .phone-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .screen {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            background: #000;
+            border-radius: 30px;
+            overflow: hidden;
+            transform: translateZ(1px);
+        }
+        
+        .screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .screen-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        /* Detalhes do celular */
+        .notch {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 25px;
+            background: #0a0a0a;
+            border-radius: 0 0 12px 12px;
+            z-index: 2;
+        }
+        
+        .volume-btn {
+            position: absolute;
+            left: -8px;
+            width: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+        
+        .vol-up {
+            top: 90px;
+            height: 35px;
+        }
+        
+        .vol-down {
+            top: 130px;
+            height: 35px;
+        }
+        
+        .power-btn {
+            position: absolute;
+            right: -8px;
+            top: 85px;
+            width: 6px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+        }
+        
+        /* Efeito de flutuação suave */
+        @keyframes float-phone {
+            0%, 100% {
+                transform: translateY(0) rotate3d(0, 0, 0, 0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate3d(0.5, 0, 0, 2deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate3d(0, 0.5, 0, 2deg);
+            }
+            75% {
+                transform: translateY(-8px) rotate3d(0.5, 0.5, 0, 2deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="phones-container" id="phones-container">
+        <!-- Celular da esquerda -->
+        <div class="phone-wrapper" id="phone-left">
+            <div class="phone">
+                <div class="phone-glow"></div>
+                <div class="notch"></div>
+                <div class="volume-btn vol-up"></div>
+                <div class="volume-btn vol-down"></div>
+                <div class="power-btn"></div>
+                <div class="screen">
+                    <img src="static/img/tela-1.png" alt="Tela do aplicativo">
+                    <div class="screen-overlay"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Celular do centro -->
+        <div class="phone-wrapper" id="phone-center">
+            <div class="phone">
+                <div class="phone-glow"></div>
+                <div class="notch"></div>
+                <div class="volume-btn vol-up"></div>
+                <div class="volume-btn vol-down"></div>
+                <div class="power-btn"></div>
+                <div class="screen">
+                    <img src="static/img/tela-2 login.jpeg" alt="Tela do aplicativo">
+                    <div class="screen-overlay"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Celular da direita -->
+        <div class="phone-wrapper" id="phone-right">
+            <div class="phone">
+                <div class="phone-glow"></div>
+                <div class="notch"></div>
+                <div class="volume-btn vol-up"></div>
+                <div class="volume-btn vol-down"></div>
+                <div class="power-btn"></div>
+                <div class="screen">
+                    <img src="static/img/tela-3 admin.jpeg" alt="Tela do aplicativo">
+                    <div class="screen-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Criar partículas de fundo
+            createParticles();
+            
+            // Posicionar os celulares
+            const phoneLeft = document.getElementById('phone-left');
+            const phoneCenter = document.getElementById('phone-center');
+            const phoneRight = document.getElementById('phone-right');
+            const container = document.getElementById('phones-container');
+            
+            // Configurações iniciais
+            const phoneWidth = 280;
+            const phoneHeight = 560;
+            const spacing = 100;
+            
+            // Posicionamento inicial
+            phoneLeft.style.transform = `translateX(-${phoneWidth + spacing}px) rotateY(15deg)`;
+            phoneCenter.style.transform = 'translateY(0)';
+            phoneRight.style.transform = `translateX(${phoneWidth + spacing}px) rotateY(-15deg)`;
+            
+            // Adicionar animação de flutuação
+            gsap.to(phoneLeft, {
+                y: -15,
+                rotationY: 5,
+                rotationX: 2,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+            
+            gsap.to(phoneCenter, {
+                y: -20,
+                rotationY: 2,
+                duration: 5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: 0.5
+            });
+            
+            gsap.to(phoneRight, {
+                y: -10,
+                rotationY: -5,
+                rotationX: -2,
+                duration: 4.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: 1
+            });
+            
+            // Efeito de parallax e 3D ao mover o mouse
+            container.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = container.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                // Movimento dos celulares baseado na posição do mouse
+                phoneLeft.style.transform = `translateX(-${phoneWidth + spacing}px) 
+                    translateY(${y * 30}px) 
+                    rotateY(${15 + x * 10}deg) 
+                    rotateX(${-y * 10}deg)`;
+                
+                phoneCenter.style.transform = `
+                    translateY(${y * 40}px) 
+                    rotateY(${x * 15}deg) 
+                    rotateX(${-y * 15}deg)`;
+                
+                phoneRight.style.transform = `translateX(${phoneWidth + spacing}px) 
+                    translateY(${y * 30}px) 
+                    rotateY(${-15 + x * 10}deg) 
+                    rotateX(${-y * 10}deg)`;
+                
+                // Efeito de brilho que segue o mouse
+                document.querySelectorAll('.phone').forEach(phone => {
+                    const glow = phone.querySelector('.phone-glow');
+                    const phoneRect = phone.getBoundingClientRect();
+                    const relativeX = (e.clientX - phoneRect.left) / phoneRect.width;
+                    const relativeY = (e.clientY - phoneRect.top) / phoneRect.height;
+                    
+                    glow.style.background = `radial-gradient(circle at ${relativeX * 100}% ${relativeY * 100}%, 
+                        rgba(255, 255, 255, 0.15) 0%, transparent 60%)`;
+                    glow.style.opacity = '1';
+                });
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                // Restaurar posições quando o mouse sai
+                gsap.to([phoneLeft, phoneCenter, phoneRight], {
+                    duration: 1.5,
+                    ease: "elastic.out(1, 0.8)",
+                    overwrite: "auto"
+                });
+                
+                // Remover brilho
+                document.querySelectorAll('.phone-glow').forEach(glow => {
+                    glow.style.opacity = '0';
+                });
+            });
+            
+            // Criar partículas de fundo
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Posição e tamanho aleatórios
+                    const size = Math.random() * 5 + 2;
+                    const posX = Math.random() * 100;
+                    const delay = Math.random() * 15;
+                    
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.bottom = `-${size}px`;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

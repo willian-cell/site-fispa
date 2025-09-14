@@ -207,58 +207,125 @@
                     </div>
                 </div>
                 
-                <!-- CONTAINER COM PERSPECTIVA + GLOW -->
-                    <div class="relative flex justify-center items-center py-10">
-                    <!-- Glow de fundo -->
-                    <div class="absolute inset-0 -z-10 blur-3xl opacity-30"
-                        style="background: radial-gradient(60% 60% at 50% 30%, #00ff88 0%, transparent 60%), radial-gradient(50% 50% at 70% 70%, #2dd4bf 0%, transparent 60%);">
+                <!-- PHONE MOCKUP (apenas o celular, sem fundo/legendas) -->
+                <!-- PHONE MOCKUP 3D INTERATIVO (fundo transparente) -->
+                <section class="py-6">
+                <div id="phoneWrap"
+                    class="relative mx-auto w-[min(92vw,320px)] [perspective:1200px]">
+
+                    <!-- Card com variáveis CSS para rotação dinâmica -->
+                    <div id="phoneCard"
+                        class="relative bg-black rounded-[2.15rem] p-3 ring-1 ring-white/10 shadow-[0_20px_60px_rgba(0,0,0,.45)]
+                                transform-gpu will-change-transform transition-transform duration-300
+                                hover:shadow-[0_30px_80px_rgba(0,0,0,.55)]
+                                [transform:rotateX(var(--rx,0deg))_rotateY(var(--ry,0deg))_scale(var(--s,1))]">
+
+                    <!-- Brilho suave que segue o mouse -->
+                    <div id="glow"
+                        class="pointer-events-none absolute inset-0 rounded-[2.15rem] opacity-70"
+                        style="background: radial-gradient(180px 180px at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.08), transparent 60%);">
                     </div>
 
-                    <!-- Card com efeito 3D -->
-                    <div class="group [perspective:1400px]">
-                        <div
-                        class="relative w-[min(92vw,420px)] bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-5 shadow-2xl ring-1 ring-white/10
-                                transform-gpu transition-all duration-500 ease-out
-                                group-hover:[transform:rotateX(6deg)_rotateY(-8deg)_translateZ(16px)]
-                                before:absolute before:inset-0 before:rounded-2xl before:pointer-events-none
-                                before:bg-gradient-to-tr before:from-white/5 before:to-transparent">
+                    <!-- Notch -->
+                    <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
 
-                        <!-- Header -->
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-[10px] bg-green-900/70 text-green-300 px-2 py-1 rounded-full border border-green-500/30 animate-pulse">
-                            Online
-                            </span>
-                        </div>
+                    <!-- Botões laterais decorativos -->
+                    <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
 
-                        <!-- MOCKUP DO CELULAR -->
-                        <div class="relative mx-auto mt-2">
-                            <div class="mx-auto w-[280px] sm:w-[300px]">
-                            <div class="relative bg-black rounded-[2.15rem] shadow-[0_20px_60px_rgba(0,0,0,.45)] p-3 ring-1 ring-white/10
-                                        after:absolute after:inset-px after:rounded-[2rem] after:pointer-events-none
-                                        after:ring-1 after:ring-white/10">
-                                <!-- Notch -->
-                                <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
-                                <!-- Botões laterais -->
-                                <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
-                                <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
-                                <!-- Tela -->
-                                <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                                <img
-                                    src="static/img/tela-mapa-1.png"
-                                    alt="App FISPA — Requerimentos por Localização"
-                                    class="w-full h-full object-cover"
-                                    loading="lazy">
-                                </div>
-                                <!-- Brilho diagonal sutil -->
-                                <div class="pointer-events-none absolute inset-0 rounded-[2.15rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                    style="background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.08) 55%, transparent 70%);">
-                                </div>
-                            </div>
-                            <p class="mt-3 text-center text-[11px] text-gray-300/90">Prévia do aplicativo (mobile)</p>
-                            </div>
-                        </div>
+                    <!-- Tela -->
+                    <div class="relative rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
+                        <img src="/static/img/tela-mapa.jpeg" alt="Tela do app FISPA"
+                            class="w-full h-full object-cover select-none pointer-events-none" loading="lazy">
+                        <!-- brilho diagonal sutil -->
+                        <div class="pointer-events-none absolute inset-0"
+                            style="background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.06) 55%, transparent 70%);">
                         </div>
                     </div>
+                    </div>
+                </div>
+                </section>
+
+                <!-- Fallback só-CSS (se JS faltar, ainda gira um pouco no hover) -->
+                <style>
+                /* hover básico sem JS */
+                #phoneWrap:hover #phoneCard {
+                    --rx: 6deg;
+                    --ry: -6deg;
+                }
+                /* respeita redução de movimento */
+                @media (prefers-reduced-motion: reduce) {
+                    #phoneCard { transition: none !important; }
+                }
+                </style>
+
+                <script>
+                (function () {
+                    const wrap  = document.getElementById('phoneWrap');
+                    const card  = document.getElementById('phoneCard');
+
+                    // limites de rotação
+                    const MAX_RX = 10;  // graus eixo X
+                    const MAX_RY = 12;  // graus eixo Y
+                    const SCALE  = 1.02;
+
+                    function setVars(rx, ry, gx, gy, s = 1) {
+                    card.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+                    card.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+                    card.style.setProperty('--s',  s.toFixed(3));
+                    card.style.setProperty('--gx', gx.toFixed(2) + '%');
+                    card.style.setProperty('--gy', gy.toFixed(2) + '%');
+                    }
+
+                    function reset() {
+                    setVars(0, 0, 50, 50, 1);
+                    }
+
+                    wrap.addEventListener('mousemove', (e) => {
+                    const rect = wrap.getBoundingClientRect();
+                    const x = e.clientX - rect.left;   // px dentro do wrap
+                    const y = e.clientY - rect.top;
+
+                    // normaliza (0..1)
+                    const nx = (x / rect.width)  * 2 - 1; // -1..1
+                    const ny = (y / rect.height) * 2 - 1;
+
+                    // calcula rotação (inverte Y porque eixo de tela é invertido)
+                    const ry = -nx * MAX_RY;
+                    const rx =  ny * MAX_RX;
+
+                    // posição do brilho (em %)
+                    const gx = (x / rect.width)  * 100;
+                    const gy = (y / rect.height) * 100;
+
+                    setVars(rx, ry, gx, gy, SCALE);
+                    });
+
+                    wrap.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 120ms ease-out';
+                    });
+
+                    wrap.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 300ms ease-in-out';
+                    reset();
+                    });
+
+                    // efeito "apertar" no clique/touch
+                    function press()  { card.style.setProperty('--s', 0.98); }
+                    function release(){ card.style.setProperty('--s', SCALE); }
+
+                    wrap.addEventListener('mousedown', press);
+                    window.addEventListener('mouseup', release);
+                    wrap.addEventListener('touchstart', press, {passive: true});
+                    wrap.addEventListener('touchend', release);
+
+                    // inicial
+                    reset();
+                })();
+                </script>
+
+
+
                 </div>
 
             </div>
@@ -404,104 +471,57 @@
     <!-- TRÊS TELAS MOBILE COM PERSPECTIVA + GLOW -->
     <section class="relative py-12">
     <!-- Glow de fundo -->
-    <div class="absolute inset-0 -z-10 blur-3xl opacity-30"
+    <div class="absolute inset-0 -z-10 blur-3xl opacity-20"
         style="background:
-            radial-gradient(60% 60% at 50% 30%, #00ff88 0%, transparent 60%),
-            radial-gradient(50% 50% at 70% 70%, #2dd4bf 0%, transparent 60%);">
+            radial-gradient(50% 50% at 50% 30%, #00ff88 0%, transparent 70%),
+            radial-gradient(40% 40% at 70% 70%, #2dd4bf 0%, transparent 70%);">
     </div>
 
     <div class="mx-auto max-w-6xl px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end justify-items-center">
 
-        <!-- ESQUERDA -->
-        <div class="group [perspective:1400px]">
-            <div class="relative w-[min(88vw,360px)] bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-5 shadow-2xl ring-1 ring-white/10
-                        transform-gpu transition-all duration-500 ease-out
-                        -rotate-3 md:-rotate-6 md:translate-y-6
-                        group-hover:[transform:rotateX(6deg)_rotateY(-8deg)_translateZ(16px)]">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-[10px] bg-green-900/70 text-green-300 px-2 py-1 rounded-full border border-green-500/30">Online</span>
-            </div>
-
-            <!-- PHONE -->
-            <div class="relative mx-auto w-[260px] sm:w-[280px]">
-                <div class="relative bg-black rounded-[2.15rem] shadow-[0_20px_60px_rgba(0,0,0,.45)] p-3 ring-1 ring-white/10
-                            after:absolute after:inset-px after:rounded-[2rem] after:pointer-events-none after:ring-1 after:ring-white/10">
-                <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
-                <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                    <img src="static/img/tela-1.png" alt="App FISPA — Tela 1"
-                        class="w-full h-full object-cover" loading="lazy">
-                </div>
-                <div class="pointer-events-none absolute inset-0 rounded-[2.15rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style="background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.08) 55%,transparent 70%);"></div>
+            <!-- ESQUERDA -->
+            <div class="relative mx-auto w-[260px] sm:w-[280px] phone-left">
+                <div class="relative bg-black rounded-[2.15rem] p-3 ring-1 ring-white/10">
+                    <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
+                    <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
+                        <img src="static/img/tela-1.png" alt="App FISPA — Tela 1" class="w-full h-full object-cover" loading="lazy">
+                    </div>
                 </div>
                 <p class="mt-2 text-center text-[11px] text-gray-300/90">Logo Oficial</p>
             </div>
-            </div>
-        </div>
 
-        <!-- CENTRO -->
-        <div class="group [perspective:1400px]">
-            <div class="relative w-[min(88vw,380px)] bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-5 shadow-2xl ring-1 ring-white/10
-                        transform-gpu transition-all duration-500 ease-out
-                        group-hover:[transform:rotateX(6deg)_rotateY(-2deg)_translateZ(20px)]">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-[10px] bg-emerald-900/70 text-emerald-300 px-2 py-1 rounded-full border border-emerald-500/30">Online</span>
-            </div>
-
-            <!-- PHONE -->
-            <div class="relative mx-auto w-[280px] sm:w-[300px]">
-                <div class="relative bg-black rounded-[2.15rem] shadow-[0_24px_70px_rgba(0,0,0,.5)] p-3 ring-1 ring-white/10
-                            after:absolute after:inset-px after:rounded-[2rem] after:pointer-events-none after:ring-1 after:ring-white/10">
-                <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
-                <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                    <img src="static/img/tela-2 login.jpeg" alt="App FISPA — Tela 2"
-                        class="w-full h-full object-cover" loading="lazy">
-                </div>
-                <div class="pointer-events-none absolute inset-0 rounded-[2.15rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style="background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.08) 55%,transparent 70%);"></div>
+            <!-- CENTRO -->
+            <div class="relative mx-auto w-[280px] sm:w-[300px] phone-center">
+                <div class="relative bg-black rounded-[2.15rem] p-3 ring-1 ring-white/10">
+                    <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
+                    <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
+                        <img src="static/img/tela-2 login.jpeg" alt="App FISPA — Tela 2" class="w-full h-full object-cover" loading="lazy">
+                    </div>
                 </div>
                 <p class="mt-2 text-center text-[11px] text-gray-300/90">Login Fispa</p>
             </div>
-            </div>
-        </div>
 
-        <!-- DIREITA -->
-        <div class="group [perspective:1400px]">
-            <div class="relative w-[min(88vw,360px)] bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl p-5 shadow-2xl ring-1 ring-white/10
-                        transform-gpu transition-all duration-500 ease-out
-                        rotate-3 md:rotate-6 md:translate-y-6
-                        group-hover:[transform:rotateX(6deg)_rotateY(8deg)_translateZ(16px)]">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-[10px] bg-green-900/70 text-green-300 px-2 py-1 rounded-full border border-green-500/30">Online</span>
-            </div>
-
-            <!-- PHONE -->
-            <div class="relative mx-auto w-[260px] sm:w-[280px]">
-                <div class="relative bg-black rounded-[2.15rem] shadow-[0_20px_60px_rgba(0,0,0,.45)] p-3 ring-1 ring-white/10
-                            after:absolute after:inset-px after:rounded-[2rem] after:pointer-events-none after:ring-1 after:ring-white/10">
-                <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
-                <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
-                <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                    <img src="static/img/tela-3 admin.jpeg" alt="App FISPA — Tela 3"
-                        class="w-full h-full object-cover" loading="lazy">
-                </div>
-                <div class="pointer-events-none absolute inset-0 rounded-[2.15rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style="background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.08) 55%,transparent 70%);"></div>
+            <!-- DIREITA -->
+            <div class="relative mx-auto w-[260px] sm:w-[280px] phone-right">
+                <div class="relative bg-black rounded-[2.15rem] p-3 ring-1 ring-white/10">
+                    <div class="absolute left-1/2 -translate-x-1/2 -top-1 w-28 h-5 rounded-b-2xl bg-black"></div>
+                    <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
+                    <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
+                        <img src="static/img/tela-3 admin.jpeg" alt="App FISPA — Tela 3" class="w-full h-full object-cover" loading="lazy">
+                    </div>
                 </div>
                 <p class="mt-2 text-center text-[11px] text-gray-300/90">Perfil Admin</p>
             </div>
-            </div>
-        </div>
 
         </div>
     </div>
-    </section>
+</section>
 
 
 
@@ -663,7 +683,7 @@
                 <div class="card-hover p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl border border-green-400 text-center relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-green-400 opacity-10 transform rotate-45 translate-x-16 -translate-y-16"></div>
                     <h3 class="text-2xl font-bold mb-4">Pequenos Municípios</h3>
-                    <div class="text-4xl font-bold neon-green mb-4">R$ 9.900</div>
+                    <div class="text-4xl font-bold neon-green mb-4">R$ 6.000</div>
                     <p class="text-gray-400 mb-6">Para cidades com até 50 mil habitantes</p>
                     <ul class="text-gray-300 space-y-3 mb-8">
                         <li><i class="fas fa-check text-green-400 mr-2"></i> Suporte por e-mail</li>
@@ -695,7 +715,7 @@
                 <div class="card-hover p-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl border border-blue-400 text-center relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-blue-400 opacity-10 transform rotate-45 translate-x-16 -translate-y-16"></div>
                     <h3 class="text-2xl font-bold mb-4">Grandes Municípios</h3>
-                    <div class="text-4xl font-bold text-blue-400 mb-4">R$ 39.900</div>
+                    <div class="text-4xl font-bold text-blue-400 mb-4">R$ 49.900</div>
                     <p class="text-gray-400 mb-6">Para cidades com mais de 200 mil habitantes</p>
                     <ul class="text-gray-300 space-y-3 mb-8">
                         <li><i class="fas fa-check text-blue-400 mr-2"></i> Suporte 24/7</li>
@@ -726,7 +746,7 @@
   </div>
 
   <div class="mx-auto max-w-6xl px-6">
-    <header class="mb-8">
+    <header class="mb-8 text-center mb-16 fade-in">
                 <h2 class="text-4xl font-bold mb-6">Valores de Investimento por <span class="neon-green"> Departamento</span></h2>
 
       <p class="mt-2 text-gray-300">
