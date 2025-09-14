@@ -53,22 +53,113 @@
 </head>
 <body class="bg-gray-900 text-white overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="navbar-sticky bg-gray-900 bg-opacity-80 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center">
-               
-                <h3 class="text-2xl font-bold neon-green">FISPA</h3>
-            </div>
-            <div class="space-x-6">
-                <a href="#sobre" class="hover:text-green-400 transition-colors">Sobre</a>
-                <a href="#desafios" class="hover:text-green-400 transition-colors">Desafios</a>
-                <a href="#funcionalidades" class="hover:text-green-400 transition-colors">Funcionalidades</a>
-                <a href="#niveis" class="hover:text-green-400 transition-colors">Níveis</a>
-                <a href="#investimento" class="hover:text-green-400 transition-colors">Investimento</a>
-            </div>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+    <!-- Brand -->
+    <div class="flex items-center gap-3">
+      <!-- Troque pela sua logo se quiser -->
+      <img src="/static/img/logo-fispa.png" alt="FISPA" class="h-8 w-auto hidden sm:block">
+      <h3 class="text-2xl font-bold text-[#00ff88]">FISPA</h3>
+    </div>
+
+    <!-- Links (desktop) -->
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#sobre" class="hover:text-green-400 transition-colors">Sobre</a>
+      <a href="#desafios" class="hover:text-green-400 transition-colors">Desafios</a>
+      <a href="#funcionalidades" class="hover:text-green-400 transition-colors">Funcionalidades</a>
+      <a href="#niveis" class="hover:text-green-400 transition-colors">Níveis</a>
+      <a href="#investimento" class="hover:text-green-400 transition-colors">Investimento</a>
+      <!-- CTA opcional -->
+      <a href="https://wa.me/5561986221356?text=Olá%20gostaria%20de%20agendar%20uma%20demonstração%20do%20sistema%20FISPA"
+         target="_blank"
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold
+                border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black transition">
+        <i class="fas fa-calendar-check text-xs"></i> Demonstração
+      </a>
+    </div>
+
+    <!-- Botão Hamburguer (mobile) -->
+    <button id="menuToggle"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg
+                   border border-white/10 hover:bg-white/5 transition"
+            aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menu">
+      <!-- Ícone (duas versões) -->
+      <svg id="iconOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Painel Mobile -->
+  <div id="mobileMenu"
+       class="md:hidden max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out
+              bg-gray-900/95 border-t border-white/10">
+    <div class="px-4 py-3 space-y-1 text-sm">
+      <a href="#sobre" class="block px-3 py-2 rounded hover:bg-white/5">Sobre</a>
+      <a href="#desafios" class="block px-3 py-2 rounded hover:bg-white/5">Desafios</a>
+      <a href="#funcionalidades" class="block px-3 py-2 rounded hover:bg-white/5">Funcionalidades</a>
+      <a href="#niveis" class="block px-3 py-2 rounded hover:bg-white/5">Níveis</a>
+      <a href="#investimento" class="block px-3 py-2 rounded hover:bg-white/5">Investimento</a>
+      <a href="https://wa.me/5561986221356?text=Olá%20gostaria%20de%20agendar%20uma%20demonstração%20do%20sistema%20FISPA"
+         target="_blank"
+         class="mt-2 block px-3 py-2 rounded-lg border-2 border-green-400 text-green-400
+                text-center font-semibold hover:bg-green-400 hover:text-black transition">
+        Agendar Demonstração
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    const btn = document.getElementById('menuToggle');
+    const panel = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('iconOpen');
+    const iconClose = document.getElementById('iconClose');
+
+    function openMenu() {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      document.addEventListener('keydown', escToClose);
+    }
+
+    function closeMenu() {
+      panel.style.maxHeight = '0px';
+      btn.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      document.removeEventListener('keydown', escToClose);
+    }
+
+    function escToClose(e) {
+      if (e.key === 'Escape') closeMenu();
+    }
+
+    let isOpen = false;
+    btn.addEventListener('click', () => {
+      isOpen ? closeMenu() : openMenu();
+      isOpen = !isOpen;
+    });
+
+    // Fecha ao clicar em um link do painel
+    panel.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (a) { closeMenu(); isOpen = false; }
+    });
+  })();
+</script>
+
 
     <!-- Hero Section -->
     <section id="hero" class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
