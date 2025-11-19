@@ -9,6 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/carrocel.css">
+    <script src="/static/carrocel.js" defer></script>
+
+
     <style>
         * { font-family: 'Inter', sans-serif; }
         .gradient-bg { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); }
@@ -169,13 +173,11 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
                     <div class="flex items-center mb-8">
-                        <picture>
-                        <source srcset="static/img/logo-fispa-dark.png" media="(prefers-color-scheme: dark)">
-                        <img src="static/img/logo-fispa.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
-                        </picture>
-
+                        <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
                         <h1 class="text-4xl font-bold neon-green">FISPA</h1>
                     </div>
+                    
+                    
                     
                     <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                         Sistema de <span class="neon-green">Fiscalização</span> e 
@@ -189,7 +191,7 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="https://ed23bd1b6de4.ngrok-free.app/login" target="_blank" 
+                        <a href="https://fispa.ngrok.app/login" target="_blank" 
                             class="inline-flex items-center gap-2 border-2 border-green-400 px-8 py-3 
                                     rounded-lg font-semibold text-green-400 bg-transparent 
                                     hover:bg-green-400 hover:text-black 
@@ -852,28 +854,52 @@
 </section>
 
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-green-600 to-blue-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-5xl font-bold mb-6">Transforme a gestão de infraestrutura da sua cidade</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Junte-se às dezenas de municípios que já modernizaram sua fiscalização e pavimentação com o FISPA
-            </p>
-            <button id="demoBtnCta" 
-                    class="bg-white text-gray-900 px-12 py-4 rounded-lg text-xl font-bold 
-                        hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-            <i class="fas fa-calendar-check mr-2"></i> Agendar Demonstração
-            </button>
+    <!-- SESSÃO PROPAGANDAS FISPA (CARROSSEL) -->
+<section id="sessao-propagandas-fispa" class="promo-section">
+  <div class="promo-overlay"></div>
 
-            <script>
-            document.getElementById("demoBtnCta").addEventListener("click", function() {
-                window.open("https://wa.me/5561986221356?text=Olá%20gostaria%20de%20agendar%20uma%20demonstração%20do%20sistema%20FISPA", "_blank");
-            });
-            </script>
+  <div class="promo-container">
+    <h2 class="promo-title">Transforme a fiscalização da sua cidade com o FISPA</h2>
+    <p class="promo-subtitle">
+      Veja como o sistema pode automatizar seus requerimentos, organizar os dados e melhorar a transparência.
+    </p>
+
+    <div class="promo-carousel">
+      <!-- Botão anterior -->
+      <button id="promoPrev" class="promo-nav" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <!-- “Janela” do carrossel -->
+      <div class="promo-viewport">
+        <div id="promoTrack" class="promo-track">
+          <!-- Slide 1 -->
+<article class="promo-card" style="--bg-img: url('/static/img/1.png');">
+  
+</article>
+
+<!-- Slide 2 -->
+<article class="promo-card" style="--bg-img: url('/static/img/7.png');">
+  
+</article>
+
+<!-- Slide 3 -->
+<article class="promo-card" style="--bg-img: url('/static/img/10.png');">
+
+</article>
 
         </div>
-    </section>
+      </div>
+
+      <!-- Botão próximo -->
+      <button id="promoNext" class="promo-nav" aria-label="Próximo">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- Modal for Demo Request -->
     <div id="demoModal" class="modal">
@@ -897,17 +923,13 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center mb-4">
-                        <picture>
-                        <source srcset="static/img/logo-fispa-dark.png" media="(prefers-color-scheme: dark)">
-                        <img src="static/img/logo-fispa.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
-                        </picture>
-
-                        <h3 class="text-2xl font-bold neon-green">FISPA</h3>
+                    <div class="flex items-center mb-8">
+                        <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
+                        <h1 class="text-4xl font-bold neon-green">FISPA</h1>
                     </div>
                     <p class="text-gray-400 mb-4">Tecnologia para Fiscalização e Pavimentação Inteligente</p>
                     <p class="text-gray-400">
-                        <i class="fas fa-map-marker-alt mr-2 text-green-400"></i> Av. Pil 12, Quadra 71, Santo AntÔnio do Descoberto - GO
+                        <i class="fas fa-map-marker-alt mr-2 text-green-400"></i> Av. Pil 12, Quadra 71, Santo Antônio do Descoberto - GO
                     </p>
                     <p class="text-gray-400 mt-2">
                         <i class="fas fa-phone-alt mr-2 text-green-400"></i> (61) 98622-1356
@@ -919,7 +941,6 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#" class="hover:text-green-400 transition-colors"><i class="fas fa-road mr-2"></i> Pavimentação</a></li>
                         <li><a href="#" class="hover:text-green-400 transition-colors"><i class="fas fa-lightbulb mr-2"></i> Iluminação Pública</a></li>
-                        <li><a href="#" class="hover:text-green-400 transition-colors"><i class="fas fa-bolt mr-2"></i> Energia</a></li>
                         <li><a href="#" class="hover:text-green-400 transition-colors"><i class="fas fa-tint mr-2"></i> Saneamento</a></li>
                     </ul>
                 </div>
@@ -951,7 +972,7 @@
                         </a>
                     </div>
                     <p class="text-gray-400 mb-2">Email:</p>
-                    <a href="mailto:contato@fispa.com.br" class="text-green-400 hover:underline">contato@fispa.com.br</a>
+                    <a href="mailto:admin@fispa.com.br" class="text-green-400 hover:underline">admin@fispa.com</a>
                 </div>
             </div>
             
