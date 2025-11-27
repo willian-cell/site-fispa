@@ -167,7 +167,23 @@
 
     <!-- Hero Section -->
     <section id="hero" class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
-
+    <!-- ⬇️ TWEAKS DE RESPONSIVIDADE (cole perto do final do <head> ou antes de fechar </section>) -->
+<style>
+  @media (max-width:640px){
+    #hero .container{padding-left:1rem;padding-right:1rem}
+    #hero h1{font-size:1.5rem}
+    #hero h2{font-size:clamp(1.5rem,6vw,2.25rem);line-height:1.2}
+    #hero p{font-size:.95rem}
+    /* botões full-width no mobile */
+    #hero .cta a{width:100%;justify-content:center}
+    /* limita o tamanho do mockup no mobile */
+    #phoneWrap{width:min(92vw,280px)}
+    /* reduz efeitos em dispositivos touch */
+    @media (pointer:coarse){
+      #phoneCard{transition:none;transform:none!important}
+    }
+  }
+</style>
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -326,10 +342,7 @@
                 })();
                 </script>
 
-
-
                 </div>
-
             </div>
         </div>
     </section>
