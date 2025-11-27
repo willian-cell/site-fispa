@@ -987,7 +987,6 @@
                     min-w-[200px]
                     animate-fadeIn
                 ">
-                    <div class="text-xs text-gray-400 font-semibold mb-2 px-2">COMPARTILHAR VIA</div>
                     
                     <button class="share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group" data-platform="whatsapp">
                         <i class="fab fa-whatsapp text-green-400 text-lg group-hover:scale-110 transition-transform"></i>
@@ -1176,34 +1175,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Web Share API para dispositivos móveis
-    if (navigator.share) {
-        // Adicionar opção nativa ao menu
-        const nativeShareOption = document.createElement('button');
-        nativeShareOption.className = 'share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group';
-        nativeShareOption.innerHTML = `
-            <i class="fas fa-mobile-alt text-yellow-400 text-lg group-hover:scale-110 transition-transform"></i>
-            <span class="font-medium">Compartilhar</span>
-        `;
-        
-        nativeShareOption.addEventListener('click', async (e) => {
-            e.preventDefault();
-            try {
-                await navigator.share({
-                    title: title,
-                    text: text,
-                    url: window.location.href,
-                });
-                hideShareMenu();
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    console.error('Erro no compartilhamento nativo:', err);
-                }
-            }
-        });
-        
-        shareOptions.insertBefore(nativeShareOption, shareOptions.firstChild.nextSibling);
-    }
+    
 });
 </script>
 
