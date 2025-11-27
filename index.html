@@ -165,63 +165,59 @@
 </script>
 
 
-    <!-- Hero Section -->
-    <section id="hero" class="gradient-bg min-h-screen 
-        flex 
-        flex-col 
-        md:flex-row 
-        items-center 
-        justify-between 
-        gap-8 
-        p-6 
-        relative 
-        overflow-hidden">    
+    <!-- Hero Section CORRIGIDA -->
+<section id="hero" class="gradient-bg min-h-screen 
+    flex 
+    flex-col 
+    lg:flex-row 
+    items-center 
+    justify-center 
+    lg:justify-between 
+    gap-8 
+    p-6 
+    relative 
+    overflow-hidden">    
         
-        <div class="order-2 lg:order-1 container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <div class="flex items-center mb-8">
-                        <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
-                        <h1 class="text-4xl font-bold neon-green">FISPA</h1>
-                    </div>
-                    
-                    
-                    
-                    <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        Sistema de <span class="neon-green">Fiscalização</span> e 
-                        <span class="gold-accent">Pavimentação</span>
-                    </h2>
-                    
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        Transformando a gestão de infraestrutura urbana com inovação e tecnologia. 
-                        Uma plataforma completa para fiscalização e gestão de pavimentação municipal, 
-                        estadual e nacional.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="https://fispa.ngrok.app/login" target="_blank" 
-                            class="inline-flex items-center gap-2 border-2 border-green-400 px-8 py-3 
-                                    rounded-lg font-semibold text-green-400 bg-transparent 
-                                    hover:bg-green-400 hover:text-black 
-                                    focus:ring-2 focus:ring-green-300 focus:ring-offset-2
-                                    transition-all duration-300 shadow-md">
-                                <i class="fas fa-globe"></i>
-                                Acessar Plataforma
-                            </a>
+    <!-- Conteúdo de texto -->
+    <div class="flex-1 max-w-2xl text-center lg:text-left">
+        <div class="flex items-center justify-center lg:justify-start mb-8">
+            <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
+            <h1 class="text-4xl font-bold neon-green">FISPA</h1>
+        </div>
+        
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Sistema de <span class="neon-green">Fiscalização</span> e 
+            <span class="gold-accent">Pavimentação</span>
+        </h2>
+        
+        <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+            Transformando a gestão de infraestrutura urbana com inovação e tecnologia. 
+            Uma plataforma completa para fiscalização e gestão de pavimentação municipal, 
+            estadual e nacional.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+            <a href="https://fispa.ngrok.app/login" target="_blank" 
+                class="inline-flex items-center gap-2 border-2 border-green-400 px-8 py-3 
+                        rounded-lg font-semibold text-green-400 bg-transparent 
+                        hover:bg-green-400 hover:text-black 
+                        transition-all duration-300 shadow-md">
+                <i class="fas fa-globe"></i>
+                Acessar Plataforma
+            </a>
+        </div>
 
-                    </div>
-
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-shield-alt mr-2"></i>
-                        <span>Sistema seguro e em conformidade com a LGPD</span>
-                    </div>
-                </div>
+        <div class="flex items-center justify-center lg:justify-start text-gray-400">
+            <i class="fas fa-shield-alt mr-2"></i>
+            <span>Sistema seguro e em conformidade com a LGPD</span>
+        </div>
+    </div>
                 
                 <!-- PHONE MOCKUP (apenas o celular, sem fundo/legendas) -->
                 <!-- PHONE MOCKUP 3D INTERATIVO (fundo transparente) -->
                 <section class="py-6">
-                <div id="phoneWrap"
-                    class="relative mx-auto w-[min(92vw,320px)] [perspective:1200px]">
+                <div class="flex-1 flex justify-center lg:justify-end">
+        <div id="phoneWrap" class="relative w-[min(92vw,320px)] [perspective:1200px]">
 
                     <!-- Card com variáveis CSS para rotação dinâmica -->
                     <div id="phoneCard"
