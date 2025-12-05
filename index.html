@@ -64,7 +64,7 @@
     <!-- Brand -->
     <div class="flex items-center gap-3">
       <!-- Troque pela sua logo se quiser -->
-      <img src="/static/img/logo-fispa.png" alt="FISPA" class="h-8 w-auto hidden sm:block">
+      <img src="static/img/logo-fispa.png" alt="FISPA" class="h-8 w-auto hidden sm:block">
       <h3 class="text-2xl font-bold text-[#00ff88]">FISPA</h3>
     </div>
 
@@ -165,55 +165,59 @@
 </script>
 
 
-    <!-- Hero Section -->
-    <section id="hero" class="gradient-bg min-h-screen flex items-center relative overflow-hidden">
-
+    <!-- Hero Section CORRIGIDA -->
+<section id="hero" class="gradient-bg min-h-screen 
+    flex 
+    flex-col 
+    lg:flex-row 
+    items-center 
+    justify-center 
+    lg:justify-between 
+    gap-8 
+    p-6 
+    relative 
+    overflow-hidden">    
         
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <div class="flex items-center mb-8">
-                        <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
-                        <h1 class="text-4xl font-bold neon-green">FISPA</h1>
-                    </div>
-                    
-                    
-                    
-                    <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        Sistema de <span class="neon-green">Fiscalização</span> e 
-                        <span class="gold-accent">Pavimentação</span>
-                    </h2>
-                    
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        Transformando a gestão de infraestrutura urbana com inovação e tecnologia. 
-                        Uma plataforma completa para fiscalização e gestão de pavimentação municipal, 
-                        estadual e nacional.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="https://fispa.ngrok.app/login" target="_blank" 
-                            class="inline-flex items-center gap-2 border-2 border-green-400 px-8 py-3 
-                                    rounded-lg font-semibold text-green-400 bg-transparent 
-                                    hover:bg-green-400 hover:text-black 
-                                    focus:ring-2 focus:ring-green-300 focus:ring-offset-2
-                                    transition-all duration-300 shadow-md">
-                                <i class="fas fa-globe"></i>
-                                Acessar Plataforma
-                            </a>
+    <!-- Conteúdo de texto -->
+    <div class="flex-1 max-w-2xl text-center lg:text-left">
+        <div class="flex items-center justify-center lg:justify-start mb-8">
+            <img src="static/img/logo2.png" alt="Logo FISPA" class="w-16 h-16 mr-4">
+            <h1 class="text-4xl font-bold neon-green">FISPA</h1>
+        </div>
+        
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Sistema de <span class="neon-green">Fiscalização</span> e 
+            <span class="gold-accent">Pavimentação</span>
+        </h2>
+        
+        <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+            Transformando a gestão de infraestrutura urbana com inovação e tecnologia. 
+            Uma plataforma completa para fiscalização e gestão de pavimentação municipal, 
+            estadual e nacional.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+            <a href="https://fispa.ngrok.app/login" target="_blank" 
+                class="inline-flex items-center gap-2 border-2 border-green-400 px-8 py-3 
+                        rounded-lg font-semibold text-green-400 bg-transparent 
+                        hover:bg-green-400 hover:text-black 
+                        transition-all duration-300 shadow-md">
+                <i class="fas fa-globe"></i>
+                Acessar Plataforma
+            </a>
+        </div>
 
-                    </div>
-
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-shield-alt mr-2"></i>
-                        <span>Sistema seguro e em conformidade com a LGPD</span>
-                    </div>
-                </div>
+        <div class="flex items-center justify-center lg:justify-start text-gray-400">
+            <i class="fas fa-shield-alt mr-2"></i>
+            <span>Sistema seguro e em conformidade com a LGPD</span>
+        </div>
+    </div>
                 
                 <!-- PHONE MOCKUP (apenas o celular, sem fundo/legendas) -->
                 <!-- PHONE MOCKUP 3D INTERATIVO (fundo transparente) -->
                 <section class="py-6">
-                <div id="phoneWrap"
-                    class="relative mx-auto w-[min(92vw,320px)] [perspective:1200px]">
+                <div class="flex-1 flex justify-center lg:justify-end">
+        <div id="phoneWrap" class="relative w-[min(92vw,320px)] [perspective:1200px]">
 
                     <!-- Card com variáveis CSS para rotação dinâmica -->
                     <div id="phoneCard"
@@ -237,7 +241,7 @@
 
                     <!-- Tela -->
                     <div class="relative rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                        <img src="/static/img/tela-mapa.jpeg" alt="Tela do app FISPA"
+                        <img src="static/img/tela-mapa.jpeg" alt="Tela do app FISPA"
                             class="w-full h-full object-cover select-none pointer-events-none" loading="lazy">
                         <!-- brilho diagonal sutil -->
                         <div class="pointer-events-none absolute inset-0"
@@ -326,10 +330,7 @@
                 })();
                 </script>
 
-
-
                 </div>
-
             </div>
         </div>
     </section>
@@ -395,6 +396,315 @@
             </div>
         </div>
     </section>
+
+
+
+    <!-- VÍDEO INSTITUCIONAL / DEPOIMENTO -->
+<section id="depoimento" class="bg-gray-900 py-16">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Veja o FISPA em funcionamento
+        <span class="neon-green block text-2xl mt-2">
+          Depoimento de quem já utiliza o sistema
+        </span>
+      </h2>
+      <p class="text-gray-300 max-w-2xl mx-auto">
+        Gestores e equipes técnicas explicam como o FISPA ajudou a organizar os requerimentos,
+        reduzir o tempo de resposta e aumentar a transparência com a população.
+      </p>
+    </div>
+
+    <!-- Vídeo + botão Play/Pause -->
+    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl neon-glow max-w-4xl mx-auto">
+      <div class="relative bg-black rounded-2xl overflow-hidden" style="aspect-ratio: 16 / 9;">
+        
+        <!-- Vídeo local - REMOVIDO O MUTED para poder ouvir o áudio do depoimento -->
+        <video
+          id="videoDepoimento"
+          class="w-full h-full object-cover"
+          preload="metadata"
+          playsinline
+          poster="/static/images/video-thumbnail.jpg">
+          <source src="/static/videos/depoimentos-fispa.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+
+        <!-- Overlay com botão central -->
+        <div
+          id="overlayDepoimento"
+          class="absolute inset-0 flex items-center justify-center
+                 bg-gradient-to-br from-black/50 via-black/40 to-black/50
+                 transition-all duration-300 opacity-100"
+        >
+          <button
+            id="btnDepoimento"
+            type="button"
+            class="flex items-center gap-3 px-6 py-3 rounded-full
+                   bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm
+                   border border-white/30 text-white hover:from-green-500/30 hover:to-blue-500/30
+                   hover:scale-105 transition-all duration-300 group"
+            aria-label="Reproduzir vídeo e música de fundo"
+          >
+            <div class="relative w-5 h-5 flex items-center justify-center">
+              <span id="iconPlay" class="group-hover:scale-110 transition-transform">
+                <i class="fas fa-play text-lg ml-0.5"></i>
+              </span>
+              <span id="iconPause" class="hidden absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-pause text-lg"></i>
+              </span>
+            </div>
+            <span id="labelDepoimento" class="text-sm font-semibold uppercase tracking-wide">
+              Reproduzir vídeo e música de fundo
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles de volume separados -->
+    <div class="mt-4 flex flex-col items-center gap-3">
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-gray-400">Volume do Depoimento:</span>
+        <input 
+          type="range" 
+          id="volumeVideo" 
+          min="0" 
+          max="1" 
+          step="0.1" 
+          value="1"
+          class="w-32 accent-green-500"
+        >
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-gray-400">Volume da Música:</span>
+        <input 
+          type="range" 
+          id="volumeMusica" 
+          min="0" 
+          max="100" 
+          step="5" 
+          value="30"
+          class="w-32 accent-blue-500"
+        >
+      </div>
+    </div>
+
+    <p class="mt-4 text-center text-xs text-gray-500">
+      O áudio do depoimento é acompanhado por uma trilha institucional de fundo.
+    </p>
+  </div>
+
+  <!-- IFRAME do YOUTUBE APENAS PARA ÁUDIO -->
+  <div class="sr-only" aria-hidden="true">
+    <div id="ytAudioWrapper">
+      <iframe
+        id="ytAudio"
+        width="0"
+        height="0"
+        src="https://www.youtube.com/embed/2RjEFmGorQE?enablejsapi=1&rel=0&controls=0&autoplay=0"
+        title="Música de Fundo Institucional"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- API do YouTube -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  // Variáveis globais
+  let ytPlayer = null;
+  let isInitialized = false;
+  let isPlaying = false;
+
+  // Inicializa o player do YouTube
+  function onYouTubeIframeAPIReady() {
+    if (!isInitialized) {
+      ytPlayer = new YT.Player('ytAudio', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+      isInitialized = true;
+    }
+  }
+
+  function onPlayerReady(event) {
+    console.log('Áudio de fundo do YouTube pronto');
+    // Configura volume inicial (30%)
+    if (ytPlayer && ytPlayer.setVolume) {
+      ytPlayer.setVolume(30);
+    }
+    
+    // Configura qualidade mínima para economizar banda (apenas áudio)
+    if (ytPlayer && ytPlayer.setPlaybackQuality) {
+      ytPlayer.setPlaybackQuality('small');
+    }
+  }
+
+  function onPlayerStateChange(event) {
+    // Sincroniza o estado com o vídeo local
+    const video = document.getElementById('videoDepoimento');
+    
+    if (event.data === YT.PlayerState.PLAYING) {
+      if (video.paused) {
+        video.play().catch(err => console.warn('Erro ao sincronizar vídeo:', err));
+      }
+    } else if (event.data === YT.PlayerState.PAUSED) {
+      if (!video.paused) {
+        video.pause();
+      }
+    }
+  }
+
+  // Controle principal
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('videoDepoimento');
+    const overlay = document.getElementById('overlayDepoimento');
+    const btn = document.getElementById('btnDepoimento');
+    const iconPlay = document.getElementById('iconPlay');
+    const iconPause = document.getElementById('iconPause');
+    const label = document.getElementById('labelDepoimento');
+    const volumeVideo = document.getElementById('volumeVideo');
+    const volumeMusica = document.getElementById('volumeMusica');
+
+    if (!video || !btn || !overlay) {
+      console.warn('Elementos do bloco de depoimento não encontrados.');
+      return;
+    }
+
+    // Configura volume inicial do vídeo
+    video.volume = parseFloat(volumeVideo.value);
+
+    // Função para atualizar UI
+    function updateUI(playing) {
+      isPlaying = playing;
+      if (playing) {
+        // Vídeo tocando
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+        label.textContent = 'Pausar vídeo e música de fundo';
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      } else {
+        // Vídeo pausado
+        iconPlay.classList.remove('hidden');
+        iconPause.classList.add('hidden');
+        label.textContent = 'Reproduzir vídeo e música de fundo';
+        overlay.style.opacity = '1';
+        overlay.style.pointerEvents = 'auto';
+      }
+    }
+
+    // Controle de play/pause
+    btn.addEventListener('click', function() {
+      if (video.paused) {
+        // Play - INICIA AMBOS SIMULTANEAMENTE
+        video.play().then(() => {
+          updateUI(true);
+          // Inicia áudio do YouTube
+          if (ytPlayer && ytPlayer.playVideo) {
+            ytPlayer.playVideo();
+          }
+        }).catch(err => {
+          console.warn('Erro ao iniciar vídeo:', err);
+          // Tenta apenas com o YouTube se o vídeo falhar
+          if (ytPlayer && ytPlayer.playVideo) {
+            ytPlayer.playVideo();
+            updateUI(true);
+          }
+        });
+      } else {
+        // Pause - PARA AMBOS SIMULTANEAMENTE
+        video.pause();
+        updateUI(false);
+        if (ytPlayer && ytPlayer.pauseVideo) {
+          ytPlayer.pauseVideo();
+        }
+      }
+    });
+
+    // Controle de volume do vídeo
+    volumeVideo.addEventListener('input', function() {
+      video.volume = parseFloat(this.value);
+    });
+
+    // Controle de volume da música
+    volumeMusica.addEventListener('input', function() {
+      if (ytPlayer && ytPlayer.setVolume) {
+        ytPlayer.setVolume(parseInt(this.value));
+      }
+    });
+
+    // Quando o vídeo terminar
+    video.addEventListener('ended', function() {
+      updateUI(false);
+      if (ytPlayer) {
+        ytPlayer.pauseVideo();
+        ytPlayer.seekTo(0); // Volta ao início
+      }
+    });
+
+    // Sincroniza pausa do YouTube quando vídeo pausa
+    video.addEventListener('pause', function() {
+      if (ytPlayer && ytPlayer.getPlayerState && ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+        ytPlayer.pauseVideo();
+        updateUI(false);
+      }
+    });
+
+    // Sincroniza play do YouTube quando vídeo play
+    video.addEventListener('play', function() {
+      if (ytPlayer && ytPlayer.getPlayerState && ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+        ytPlayer.playVideo();
+        updateUI(true);
+      }
+    });
+
+    // Pausar ambos quando clicar no overlay (fora do botão)
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay && !video.paused) {
+        video.pause();
+        if (ytPlayer && ytPlayer.pauseVideo) {
+          ytPlayer.pauseVideo();
+        }
+        updateUI(false);
+      }
+    });
+
+    // Controles de teclado para acessibilidade
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+
+    // Inicializar UI
+    updateUI(false);
+    
+    // Pré-carrega o vídeo para melhor experiência
+    video.load();
+  });
+
+  // Fallback caso a API do YouTube não carregue
+  setTimeout(() => {
+    if (!ytPlayer && isInitialized === false) {
+      console.warn('YouTube API não carregou, usando apenas vídeo local');
+      const label = document.getElementById('labelDepoimento');
+      if (label) {
+        label.textContent = 'Reproduzir vídeo';
+      }
+    }
+  }, 5000);
+</script>
 
 
     <section id="visao-onu" class="bg-gray-900 text-gray-100 py-12">
@@ -502,7 +812,7 @@
                     <div class="absolute -left-0.5 top-16 h-9 w-0.5 bg-gray-500/70 rounded"></div>
                     <div class="absolute -left-0.5 top-28 h-6 w-0.5 bg-gray-500/70 rounded"></div>
                     <div class="rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black ring-1 ring-white/10">
-                        <img src="static/img/tela-2 login.jpeg" alt="App FISPA — Tela 2" class="w-full h-full object-cover" loading="lazy">
+                        <img src="static/img/tela-2 login.jpg" alt="App FISPA — Tela 2" class="w-full h-full object-cover" loading="lazy">
                     </div>
                 </div>
                 <p class="mt-2 text-center text-[11px] text-gray-300/90">Login Fispa</p>
@@ -749,7 +1059,7 @@
 
   <div class="mx-auto max-w-6xl px-6">
     <header class="mb-8 text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold mb-6">Valores de Investimento por <span class="neon-green"> Departamento</span></h2>
+                <h2 class="text-4xl font-bold mb-6">Investimento por <span class="neon-green"> Departamento</span></h2>
 
       <p class="mt-2 text-gray-300">
         Estrutura de equipe, licenças e serviços para implantação e sustentação da plataforma.
@@ -898,8 +1208,311 @@
     </div>
 
   </div>
+
 </section>
 
+
+   <!-- Sessão de Compartilhamento FISPA -->
+<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <!-- Título e Descrição -->
+        <div class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ajude a <span class="text-green-400">Transformar</span> Mais Cidades
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Compartilhe o FISPA com outros gestores públicos e faça parte da revolução 
+                na fiscalização e pavimentação urbana do Brasil.
+            </p>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-green-400 mb-2">50+</div>
+                <div class="text-sm text-gray-400">Municípios</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-green-400 mb-2">100K+</div>
+                <div class="text-sm text-gray-400">Requerimentos</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-green-400 mb-2">24/7</div>
+                <div class="text-sm text-gray-400">Disponibilidade</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-green-400 mb-2">99%</div>
+                <div class="text-sm text-gray-400">Satisfação</div>
+            </div>
+        </div>
+
+        <!-- Botão de Compartilhamento Melhorado -->
+        <div class="flex flex-col items-center justify-center space-y-8">
+            <!-- Botão Principal -->
+            <div class="promo-share relative inline-block">
+                <button id="shareBtn" class="
+                    bg-gradient-to-r from-green-400 to-green-600 
+                    hover:from-green-500 hover:to-green-700
+                    border-none 
+                    px-8 py-4
+                    rounded-full 
+                    text-black 
+                    font-bold
+                    cursor-pointer 
+                    transition-all 
+                    duration-300 
+                    hover:shadow-2xl 
+                    hover:shadow-green-500/30
+                    hover:-translate-y-1
+                    active:translate-y-0
+                    flex 
+                    items-center 
+                    gap-3
+                    text-lg
+                    group
+                ">
+                    <i class="fas fa-share-alt group-hover:scale-110 transition-transform duration-300"></i>
+                    Compartilhar o FISPA
+                    <i class="fas fa-chevron-down text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                </button>
+                
+                <!-- Menu de Opções -->
+                <div id="shareOptions" class="
+                    absolute 
+                    top-full 
+                    left-1/2 
+                    -translate-x-1/2 
+                    bg-gray-800 
+                    rounded-xl 
+                    p-3 
+                    mt-3 
+                    shadow-2xl 
+                    shadow-black/60
+                    border 
+                    border-gray-600
+                    z-50
+                    hidden
+                    backdrop-blur-sm
+                    min-w-[200px]
+                    animate-fadeIn
+                ">
+                    
+                    <button class="share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp text-green-400 text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">WhatsApp</span>
+                    </button>
+                    
+                    <button class="share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group" data-platform="linkedin">
+                        <i class="fab fa-linkedin text-blue-400 text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">LinkedIn</span>
+                    </button>
+                    
+                    <button class="share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group" data-platform="twitter">
+                        <i class="fab fa-twitter text-sky-400 text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">Twitter</span>
+                    </button>
+                    
+                    <div class="border-t border-gray-600 my-2"></div>
+                    
+                    <button class="share-option w-full flex items-center gap-3 px-4 py-3 border-none bg-transparent text-white cursor-pointer rounded-lg hover:bg-gray-700/80 transition-all duration-200 group" data-platform="copy">
+                        <i class="fas fa-link text-purple-400 text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="font-medium">Copiar Link</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Texto de incentivo -->
+            <p class="text-gray-400 text-sm max-w-md">
+                Cada compartilhamento ajuda a levar tecnologia e eficiência para mais municípios brasileiros
+            </p>
+        </div>
+
+        <!-- Redes Sociais Diretas -->
+        <div class="mt-12 pt-8 border-t border-gray-700">
+            <p class="text-gray-400 mb-6">Ou nos siga nas redes sociais:</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-green-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25">
+                    <i class="fab fa-linkedin-in text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-blue-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25">
+                    <i class="fab fa-twitter text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25">
+                    <i class="fab fa-facebook-f text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-700 hover:bg-pink-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25">
+                    <i class="fab fa-instagram text-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Sistema de compartilhamento melhorado
+document.addEventListener('DOMContentLoaded', function() {
+    const shareBtn = document.getElementById('shareBtn');
+    const shareOptions = document.getElementById('shareOptions');
+    
+    // Animação de entrada do menu
+    function showShareMenu() {
+        shareOptions.classList.remove('hidden');
+        shareOptions.style.opacity = '0';
+        shareOptions.style.transform = 'translateX(-50%) translateY(-10px)';
+        
+        setTimeout(() => {
+            shareOptions.style.opacity = '1';
+            shareOptions.style.transform = 'translateX(-50%) translateY(0)';
+            shareOptions.style.transition = 'all 0.3s ease';
+        }, 10);
+    }
+    
+    function hideShareMenu() {
+        shareOptions.style.opacity = '0';
+        shareOptions.style.transform = 'translateX(-50%) translateY(-10px)';
+        
+        setTimeout(() => {
+            shareOptions.classList.add('hidden');
+        }, 300);
+    }
+    
+    // Abrir/fechar menu de compartilhamento
+    shareBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (shareOptions.classList.contains('hidden')) {
+            showShareMenu();
+        } else {
+            hideShareMenu();
+        }
+    });
+    
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!shareBtn.contains(e.target) && !shareOptions.contains(e.target)) {
+            hideShareMenu();
+        }
+    });
+    
+    // Prevenir fechamento ao clicar no menu
+    shareOptions.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    
+    // Opções de compartilhamento
+    const shareOptionBtns = document.querySelectorAll('.share-option');
+    
+    shareOptionBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const platform = this.dataset.platform;
+            const currentUrl = encodeURIComponent(window.location.href);
+            const title = 'FISPA - Sistema de Fiscalização e Pavimentação';
+            const text = 'Conheça o FISPA, a plataforma que está transformando a gestão de infraestrutura urbana com tecnologia avançada! 🚀✨';
+            
+            let shareUrl = '';
+            
+            switch(platform) {
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + '\n\n' + window.location.href)}`;
+                    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+                    break;
+                    
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`;
+                    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+                    break;
+                    
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${currentUrl}&hashtags=FISPA,Fiscalização,Pavimentação,GestãoPública`;
+                    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+                    break;
+                    
+                case 'copy':
+                    navigator.clipboard.writeText(window.location.href)
+                        .then(() => {
+                            // Feedback visual melhorado
+                            const originalContent = this.innerHTML;
+                            this.innerHTML = `
+                                <i class="fas fa-check text-green-400 text-lg"></i>
+                                <span class="font-medium text-green-400">Link Copiado!</span>
+                            `;
+                            this.classList.add('bg-green-500/10');
+                            
+                            setTimeout(() => {
+                                this.innerHTML = originalContent;
+                                this.classList.remove('bg-green-500/10');
+                            }, 2000);
+                        })
+                        .catch(err => {
+                            console.error('Erro ao copiar link: ', err);
+                            // Fallback
+                            const textArea = document.createElement('textarea');
+                            textArea.value = window.location.href;
+                            document.body.appendChild(textArea);
+                            textArea.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            
+                            const originalContent = this.innerHTML;
+                            this.innerHTML = `
+                                <i class="fas fa-check text-green-400 text-lg"></i>
+                                <span class="font-medium text-green-400">Copiado!</span>
+                            `;
+                            
+                            setTimeout(() => {
+                                this.innerHTML = originalContent;
+                            }, 2000);
+                        });
+                    break;
+            }
+            
+            // Fechar menu após ação
+            if (platform !== 'copy') {
+                hideShareMenu();
+            }
+            
+            // Tracking (opcional)
+            console.log(`🔗 Compartilhado via: ${platform}`);
+        });
+    });
+    
+    // Fechar menu com tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !shareOptions.classList.contains('hidden')) {
+            hideShareMenu();
+        }
+    });
+    
+    
+});
+</script>
+
+<style>
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Melhorar a responsividade */
+@media (max-width: 640px) {
+    #shareOptions {
+        min-width: 180px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+</style>
 
     <!-- Modal for Demo Request -->
     <div id="demoModal" class="modal">
@@ -972,7 +1585,7 @@
                         </a>
                     </div>
                     <p class="text-gray-400 mb-2">Email:</p>
-                    <a href="mailto:admin@fispa.com.br" class="text-green-400 hover:underline">admin@fispa.com</a>
+                    <a href="mailto:fispasistemadefiscalizacaoepav@gmail.com" class="text-green-400 hover:underline">admin@fispa.com.br</a>
                 </div>
             </div>
             
